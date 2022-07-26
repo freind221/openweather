@@ -214,8 +214,8 @@ class Wind {
 class Main {
   double? temp;
   dynamic feelsLike;
-  double? tempMin;
-  double? tempMax;
+  dynamic tempMin;
+  dynamic tempMax;
   int? pressure;
   int? humidity;
 

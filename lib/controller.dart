@@ -22,27 +22,42 @@
 //   }
 // }
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:openweather/model.dart';
 import 'package:openweather/service.dart';
 
 class WeatherController extends GetxController {
-  var data = Weather();
-  String city;
+  Weather? data;
+  var city = ''.obs;
   WeatherController({required this.city});
 
-  @override
-  void onInit() {
-    super.onInit();
+  // @override
+  // void onInit() {
+  //   updateCity(city);
+  //   super.onInit();
 
-    fetchProducts();
+  //   //fetchProducts();
+  // }
+
+  updateCity(RxString cityN) {
+    city = cityN;
+    update();
   }
 
+  final editingController1 = TextEditingController();
+
   void fetchProducts() async {
-    var weather = await RemoteService.getWeather(city);
+    var weather = await RemoteService.getWeather(city.toString());
     if (weather != null) {
       data = weather;
       update();
     }
   }
+
+  // @override
+  // void dispose() {
+  //   editingController1.dispose();
+  //   super.dispose();
+  // }
 }
