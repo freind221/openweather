@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:openweather/binding.dart';
-import 'package:openweather/controller.dart';
+import 'package:openweather/services/binding.dart';
+import 'package:openweather/controllers/controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,8 +14,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final WeatherController weatherController =
       Get.put((WeatherController(city: HomePage.city)));
-
-  //final TextEditingController editingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,36 +33,20 @@ class _HomePageState extends State<HomePage> {
       body: GetBuilder<WeatherController>(builder: (controller) {
         return Column(
           children: [
-            //Tetfield(),
             TextField(
               controller: controller.editingController1,
               onChanged: (value) {
                 HomePage.city = value.obs;
                 controller.updateCity(HomePage.city);
+                controller.fetchProducts();
               },
-              // onSubmitted: (value) {
-              //   HomePage.city = value.obs;
-              //   controller.updateCity(HomePage.city);
-              // },
               decoration: const InputDecoration(labelText: 'City'),
               textAlign: TextAlign.center,
             ),
             ElevatedButton(
                 onPressed: (() {
-                  print('city${HomePage.city}');
-                  //HomePage.city = controller.editingController1.text.obs;
-                  //controller.updateCity(HomePage.city);
-                  //HomePage.city = controller.editingController1.text.obs;
-
-                  print('Check${HomePage.city}');
                   controller.fetchProducts();
-                  print('Check2${HomePage.city}');
-
-                  //print(controller.editingController1.text);
-
-                  //controller.update();
-
-                  Get.snackbar('Temprature', '${controller.data?.main?.temp}');
+                  Get.snackbar('Clouds', '${controller.data?.main?.feelsLike}');
                 }),
                 child: const Text('Search')),
           ],

@@ -274,8 +274,8 @@ class Weather1 {
 }
 
 class Coord {
-  double? lon;
-  double? lat;
+  dynamic lon;
+  dynamic lat;
 
   Coord({this.lon, this.lat});
 

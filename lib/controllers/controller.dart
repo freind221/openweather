@@ -24,21 +24,13 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:openweather/model.dart';
-import 'package:openweather/service.dart';
+import 'package:openweather/models/model.dart';
+import 'package:openweather/services/service.dart';
 
 class WeatherController extends GetxController {
   Weather? data;
   var city = ''.obs;
   WeatherController({required this.city});
-
-  // @override
-  // void onInit() {
-  //   updateCity(city);
-  //   super.onInit();
-
-  //   //fetchProducts();
-  // }
 
   updateCity(RxString cityN) {
     city = cityN;

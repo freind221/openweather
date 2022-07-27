@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:openweather/binding.dart';
+import 'package:openweather/services/binding.dart';
 
-import 'package:openweather/home.dart';
+import 'package:openweather/views/home.dart';
 
 void main() {
   runApp(const MyApp());
